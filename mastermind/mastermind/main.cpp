@@ -8,7 +8,7 @@ void instructions();
 void tries(char guess[], int nb); //demander entrée joueur
 bool gameOver(char guess[], char right[]); // condition victoire
 enum colors{Blue,Orange,Green,Yellow,Red,Purple };
-
+char randomColors(int ascii);
 
 int main()
 {
@@ -37,5 +37,25 @@ void instructions()
 	cout << "Available colors are Blue, Green, Orange, Purple, Red and Yellow." << endl;
 	cout << "An sample guess would be look like this: R R G B" << endl;
 	cout << "=====================================================================";
+}
+
+char randomColors(int ascii)
+{
+	switch (ascii)
+	{
+	case 1:
+		return static_cast<char>(66);
+	case 2:
+		return static_cast<char>(71);
+	case 3:
+		return static_cast<char>(79);
+	case 4:
+		return static_cast<char>(80);
+	case 5:
+		return static_cast<char>(82);
+	case 6:
+		return static_cast<char>(89);
+	}
+	
 }
 
