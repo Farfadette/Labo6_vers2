@@ -1,6 +1,6 @@
 #include <iostream>
-#include <ctime>    // For time()
-#include <cstdlib>  // For srand() and rand()
+#include <ctime>    // time()
+#include <cstdlib>  // srand() and rand()
 
 using namespace std;
 
@@ -12,7 +12,6 @@ char randomColors(int ascii);
 
 int main(void)
 {
-
 	char response;
 	char guess[4];
 	char right[4];
@@ -22,10 +21,11 @@ int main(void)
 
 	instructions();
 
-	while (playAgain) //tant que vx rejouer
+	while (playAgain) //tant que 
 	{
 		won = false;
 		nbTry = 10;
+
 		// genere random
 		srand(time(0));
 
@@ -43,12 +43,12 @@ int main(void)
 		}
 			if (won)
 			{
-				cout << "You win! The correct sequence was " << right[0] << " "
+				cout << "You win! The correct code was " << right[0] << " "
 					<< right[1] << " " << right[2] << " " << right[3] << endl;
 			}
 			else
 			{
-				cout << "You lose! The correct sequence was " << right[0] << " "
+				cout << "You lose! The correct code was " << right[0] << " "
 					<< right[1] << " " << right[2] << " " << right[3] << endl;
 			}
 			//replay
@@ -70,8 +70,8 @@ void instructions()
 	cout << "The second number says how many of the right colors you have in the wrong place." << endl;
 	cout << "To guess, enter the first letter of each color." << endl;
 	cout << "Available colors are Blue, Green, Orange, Purple, Red and Yellow." << endl;
-	cout << "An sample guess would be look like this: R R G B" << endl;
-	cout << "=====================================================================";
+	cout << "An sample guess look like this: R R G B" << endl;
+	cout << "===================================================================== "<< endl;
 }
 
 void tries(char guess[], int nb)
@@ -89,6 +89,60 @@ void tries(char guess[], int nb)
 
 bool gameOver(char guess[], char right[])
 {
+	int totalright = 0;
+	int rightColors = 0;
+
+	int grab;
+	bool exclude[4];
+	bool excludeColor[4];
+	bool inList = false;
+
+	for (int i = 0; i < 4; i++)
+	{
+		exclude[i] = false;
+		excludeColor[i] = false;
+	}
+	//check player guess
+	for (int i = 0; i < 4; i++)
+	{
+		if (guess[i] == right[i])
+		{
+			totalright++;
+			exclude[i] = true;
+		}
+	}
+	// check colors and Position
+	for (int i = 0; i < 4; i++)
+	{
+		if (!exclude[i])
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				if (!exclude[j] && i != j)
+				{
+					if ((guess[i] == right[j]) && !excludeColor[j])
+					{
+						inList = true;
+						grab = j;
+					}
+				}
+			}
+			if (inList)
+			{
+				rightColors++;
+				inList = false;
+				excludeColor[grab] = true;
+			}
+		}
+	}
+
+	if (rightColors == 4)
+		return true;
+	else
+	{
+		cout << rightColors << ", " << rightColors << endl;
+		return false;
+	}
 	return false;
 }
 
@@ -109,6 +163,6 @@ char randomColors(int ascii)
 	case 6:
 		return static_cast<char>(89);
 	}
-	
+	return 0;
 }
 
