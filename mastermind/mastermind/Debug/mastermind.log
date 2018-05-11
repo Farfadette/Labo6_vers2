@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\pc\documents\techprog\version2\labo6_vers2\mastermind\mastermind\main.cpp(16): warning C4101: 'symbol' : variable locale non référencée
+c:\users\pc\documents\techprog\version2\labo6_vers2\mastermind\mastermind\main.cpp(21): warning C4101: 'nbTry' : variable locale non référencée
+c:\users\pc\documents\techprog\version2\labo6_vers2\mastermind\mastermind\main.cpp(20): warning C4101: 'won' : variable locale non référencée
+c:\users\pc\documents\techprog\version2\labo6_vers2\mastermind\mastermind\main.cpp(17): warning C4101: 'guess' : variable locale non référencée
+c:\users\pc\documents\techprog\version2\labo6_vers2\mastermind\mastermind\main.cpp(18): warning C4101: 'right' : variable locale non référencée
+  mastermind.vcxproj -> C:\Users\PC\Documents\techprog\VERSION2\Labo6_vers2\mastermind\Debug\mastermind.exe
