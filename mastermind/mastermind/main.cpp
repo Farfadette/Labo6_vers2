@@ -12,7 +12,7 @@ char randomColors(int ascii);
 
 int main(void)
 {
-	
+
 	char response;
 	char guess[4];
 	char right[4];
@@ -32,8 +32,7 @@ int main(void)
 		for (int i = 0; i < 4; i++)
 		{
 			int temp = (rand() % 6) + 1;
-			right[i] = randomColors(temp);
-			
+			right[i] = randomColors(temp);	
 		}
 		// loop jusqua-ce que le joueur gagne    
 		while (!won && nbTry > 0)
@@ -77,6 +76,15 @@ void instructions()
 
 void tries(char guess[], int nb)
 {
+	cout << "Enter your guess ("<< nb<< "): ";
+	cin >> guess[0] >> guess[1] >> guess[2] >> guess[3]; //entrée joueur
+
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (guess[i] > 91) // lower case level
+			guess[i] = guess[i] - 32;
+	}
 }
 
 bool gameOver(char guess[], char right[])
